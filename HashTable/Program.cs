@@ -41,7 +41,7 @@ namespace HashTable
 
                     MapNode<string, int> maapNode = new MapNode<string, int>(10);
                     string[] Paragraph;
-                    string input = "I had never eaten any kind of Thai food, so I was pretty excited about going to a Thai restaurant with my grandmother.";
+                    string input = "I had never eaten any kind of Thai food, so I was pretty excited about going to a Thai restaurant with my grandmother";
                     Paragraph = input.Split(' ');
                     //Given string input
 
@@ -63,7 +63,34 @@ namespace HashTable
                     {
                         maapNode.Display(i);
                     }
+                    break;
+                case 3:
+                    MapNode<string, int> myMap = new MapNode<string, int>(10);
+                    string[] paragraph1;
+                    string input1 = "I had never eaten any kind of Thai food, so I was pretty excited about going to a Thai restaurant with my grandmother";
+                    paragraph1 = input1.Split(' ');
 
+                    int count1 = 1;
+                    foreach (string i in paragraph1)
+                    {
+                        counts = myMap.CheckHash(i);
+                        if (count1 > 1)
+                        {
+                            myMap.Add(i, counts);
+                        }
+                        else
+                        {
+                            myMap.Add(i, 1);
+                        }
+                    }
+                    IEnumerable<string> unique = paragraph1.Distinct<string>();
+                    Console.WriteLine("\nEnter the word which you want to remove in paragraph");
+                    string removeWord = Console.ReadLine();
+                    myMap.Remove(removeWord);
+                    foreach (var i in unique)
+                    {
+                        myMap.Display(i);
+                    }
                     break;
                 default:
                     Console.WriteLine("Enter the valid number");
