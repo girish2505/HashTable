@@ -30,14 +30,12 @@ namespace HashTable
             };
             LinkedListofPosition.AddLast(keyValue);
         }
-        //Step 1: Get array position
         public int GetArrayPosition(K key)
         {
             int hashcode = key.GetHashCode();
             int position = hashcode % size;
             return Math.Abs(position);
         }
-        //Step 2: Create linkedlist for a particular position
         public LinkedList<KeyValue<K, V>> GetLinkedListPosition(int position)
         {
             if (items[position] == null)
@@ -46,7 +44,6 @@ namespace HashTable
             }
             return items[position];
         }
-        // Check if element is already Present
         public int CheckHash(K key)
         {
             int position = GetArrayPosition(key);
